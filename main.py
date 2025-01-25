@@ -13,20 +13,14 @@ with open('../../schwab_app_secret.txt', 'r') as secret_file:
     schwab_app_secret = secret_file.readline()
     print(schwab_app_secret)
 
-#schwab_app_token=
-
 
 api_key = schwab_api_key
 app_secret = schwab_app_secret
-
 callback_url = 'https://127.0.0.1:8182/'
-
-'''
-token_path = '/path/to/token.json'
+token_path = '../../schwab_token.json'
 
 c = auth.easy_client(api_key, app_secret, callback_url, token_path)
 
-r = c.get_price_history_every_day('AAPL')
+r = c.get_price_history_every_day('DDD')
 r.raise_for_status()
 print(json.dumps(r.json(), indent=4))
-'''
