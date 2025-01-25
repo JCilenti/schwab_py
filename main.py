@@ -21,6 +21,10 @@ token_path = '../../schwab_token.json'
 
 c = auth.easy_client(api_key, app_secret, callback_url, token_path)
 
-r = c.get_price_history_every_day('DDD')
+#r = c.get_price_history_every_day('DDD')
+#r.raise_for_status()
+#print(json.dumps(r.json(), indent=4))
+
+r = c.get_quote('DDD')
 r.raise_for_status()
 print(json.dumps(r.json(), indent=4))
