@@ -17,7 +17,7 @@ with open('../../schwab_app_secret.txt', 'r') as secret_file:
 api_key = schwab_api_key
 app_secret = schwab_app_secret
 callback_url = 'https://127.0.0.1:8182/'
-token_path = '../../schwab_token.json'
+token_path = 'token.json'
 
 c = auth.easy_client(api_key, app_secret, callback_url, token_path)
 
@@ -25,6 +25,18 @@ c = auth.easy_client(api_key, app_secret, callback_url, token_path)
 #r.raise_for_status()
 #print(json.dumps(r.json(), indent=4))
 
-r = c.get_quote('DDD')
-r.raise_for_status()
-print(json.dumps(r.json(), indent=4))
+account_info = c.get_account_numbers()
+account_info.raise_for_status()
+print(json.dumps(account_info.json(), indent=4))
+
+spec_account_1 = c.get_account('7CECEEC61EC849EFF3879027F2BBE6479479B61F45EFAFEACAB017C57210E4A4')
+spec_account_1.raise_for_status()
+print(json.dumps(spec_account_1.json(), indent=4))
+
+spec_account_2 = c.get_account('8C2E655CAFFE120E8A189818C5D8FACE042E93FFB6F8A99143352AE1684D028A')
+spec_account_2.raise_for_status()
+print(json.dumps(spec_account_2.json(), indent=4))
+
+
+
+
